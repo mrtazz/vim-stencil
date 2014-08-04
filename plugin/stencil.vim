@@ -15,8 +15,7 @@ endif
 let g:loaded_stencil_vim = 1
 
 if !exists("g:StencilTemplatepath")
-  echoerr "Stencil: Please set g:StencilTemplatepath for the plugin to work."
-  finish
+  let g:StencilTemplatepath = "~/.vim/templates/"
 endif
 
 "define the Stencil() command

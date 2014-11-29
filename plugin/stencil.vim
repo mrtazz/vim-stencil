@@ -27,9 +27,13 @@ function! LoadTemplate(name)
     "read in the template
     execute 'read ' . g:StencilTemplatepath . a:name
 
-    " replace occurrences of THEDATE with the actual date
+    " replace occurrences of DATE with the actual date
     let thedate = strftime("%m\\/%d\\/%Y")
     silent exe "1,$g/%%DATE%%/s/%%DATE%%/" . thedate
+
+    " replace occurrences of WEEKDAY with the current weekday
+    let weekday = strftime("%A")
+    silent exe "1,$g/%%WEEKDAY%%/s/%%WEEKDAY%%/" . thedate
 
     "if the cursor was previously on a blank line, delete it
     if getline(line(".")-1) =~ '^\s*$'
